@@ -16,6 +16,7 @@ const theme = createTheme({
       main:'FFFFFF',
       opacity9:'rgba(255, 255, 255, 0.9)',
       opacity7:'rgba(255, 255, 255, 0.7)',
+      opacity5:'rgba(255, 255, 255, 0.5)',
     }
     // Other palette customizations
   },

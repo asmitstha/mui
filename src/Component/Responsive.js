@@ -7,8 +7,18 @@ import Divider from '@mui/material/Divider';
 import MuiDrawer from '@mui/material/Drawer';
 import MuiAppBar from '@mui/material/AppBar';
 import IconButton from '@mui/material/IconButton';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail'; // Added import
+import AssignmentIcon from '@mui/icons-material/Assignment';
+import BarChartIcon from '@mui/icons-material/BarChart';
+import ScheduleIcon from '@mui/icons-material/Schedule';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import ReceiptLongIcon from '@mui/icons-material/ReceiptLong';
+import DescriptionIcon from '@mui/icons-material/Description';
+import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
+import ConstructionIcon from '@mui/icons-material/Construction';
+import BadgeIcon from '@mui/icons-material/Badge';
+import LocalShippingIcon from '@mui/icons-material/LocalShipping';
+import FolderIcon from '@mui/icons-material/Folder';
+import SettingsSuggestIcon from '@mui/icons-material/SettingsSuggest';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
@@ -27,7 +37,8 @@ import CloseIcon from '@mui/icons-material/Close';
 import Button from '@mui/material/Button';
 import { useMediaQuery } from '@mui/material';
 import VerticalTabs from './TabPanel';
-
+import OutlinedCard from './OutlinedCard';
+import Fade from '@mui/material/Fade';
 
 const drawerWidth = 240;
 
@@ -163,18 +174,20 @@ function Responsive(props) {
   }));
 
   const sidebarItems = [
-    { label: 'Projects',  icon: <Home/>, collapsible: false, children: [] },
-    { label: 'Dashboard',  icon: <Home/>, collapsible: false, children: [] },
-    { label: 'Timesheet', icon: <Info/>, collapsible: false, children: [] },
-    { label: 'Forms', icon: <Work/>, collapsible: true, children: ['Service 1', 'Service 2', 'Service 3'] },
-    { label: 'Purchase Orders', icon: <ContactMail/>, collapsible: false, children: [] },
-    { label: 'Delivery Dockets', icon: <ContactMail/>, collapsible: false, children: [] },
-    { label: 'Equipments', icon: <ContactMail/>, collapsible: false, children: [] },
-    { label: 'File Manager', icon: <ContactMail/>, collapsible: false, children: [] },
-    { label: 'User Management', icon: <ContactMail/>, collapsible: true, children: ['Clients', 'Users', 'Roles and Permissions', 'Employees'] },
-    { label: 'Settings', icon: <ContactMail/>, collapsible: true, children: ['Allowance', 'Category', 'Accounting Code', 'Resource Cost Sheet', 'Claim Payment Act', 'Segment','Organization','Cost Centre','Employee Cost Sheet', 'Equipment Type','Other Settings'] },
-    { label: 'Resource Assigner', icon: <ContactMail/>, collapsible: false, children: [] },
-    { label: 'Suppliers', icon: <ContactMail/>, collapsible: false, children: [] },
+    { label: 'Projects',  icon: <AssignmentIcon/>, collapsible: false, children: [] },
+    { label: 'Dashboard',  icon: <BarChartIcon/>, collapsible: false, children: [] },
+    { label: 'Timesheet', icon: <ScheduleIcon/>, collapsible: false, children: [] },
+    { label: 'Purchase Orders', icon: <ShoppingCartIcon/>, collapsible: false, children: [] },
+    { label: 'Delivery Dockets', icon: <ReceiptLongIcon/>, collapsible: false, children: [] },
+    { label: 'Forms', icon: <DescriptionIcon/>, collapsible: true, children: ['All Forms', 'Assigned Forms', 'Form Results','Form Status'] },
+    { label: 'User Management', icon: <ManageAccountsIcon/>, collapsible: true, children: ['Users', 'Employees','Roles and Permissions','Clients'] },
+    { label: 'Equipment', icon: <ConstructionIcon/>, collapsible: false, children: [] },
+    { label: 'Resource Assigner', icon: <BadgeIcon/>, collapsible: false, children: [] },
+    { label: 'Suppliers', icon: <LocalShippingIcon/>, collapsible: false, children: [] },
+    { label: 'File Manager', icon: <FolderIcon/>, collapsible: false, children: [] },
+    { label: 'Settings', icon: <SettingsSuggestIcon/>, collapsible: true, children: ['Cost Centre','Allowance', 'Categories', 'Accounting Code', 'Employee Cost Sheet','Resource Cost Sheet','Estimation Sheet Formatter','Resource Type','Equipment Type', 'Segment','Claim Payment Act', 'Organization','Other Settings'] },
+   
+   
   ];
 
   const handleClick = (index) => {
@@ -253,7 +266,9 @@ function Responsive(props) {
         <>
         {!openIcon  ? (
           <HtmlTooltip
-          arrow
+          TransitionComponent={Fade} 
+          //TransitionProps={{ timeout: 1000 }} // Adjust the duration (in ms) as needed
+            arrow
             placement="right"
             title={
             <React.Fragment>
@@ -313,6 +328,10 @@ function Responsive(props) {
       <List> 
       {sidebarItems.map((item, index) => renderListItem(item, index))} 
       </List>
+      <div style={{ display: openIcon ? 'block' : 'none'}}>
+        <OutlinedCard  />
+      </div>
+     
     </div>
   );
 
@@ -365,6 +384,7 @@ function Responsive(props) {
           }}
         >
           {drawer}
+         
         </Drawer>
 
         <Drawer
